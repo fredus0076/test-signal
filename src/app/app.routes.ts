@@ -7,7 +7,7 @@ export const routes: Routes = [
     },
     {
         path: 'templating',
-        loadComponent: () => import('./templating/templating.component').then(m => m.TemplatingComponent) //loadComponent quand on appel un component
+        loadComponent: () => import('./features/templating/templating.component').then(m => m.TemplatingComponent) //loadComponent quand on appel un component
     },
     {
         path: 'shop',

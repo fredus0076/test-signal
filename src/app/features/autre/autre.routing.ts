@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { userResolver } from './page/user-resolver';
-import { secureGuard } from './secure-guard';
+import { secureGuard } from '../../core/auth/secure-guard';
 
 export const AutreRoutes: Routes = [
   { 

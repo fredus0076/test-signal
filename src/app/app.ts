@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
-import { TemplatingComponent } from './templating/templating.component';
+import { TemplatingComponent } from './features/templating/templating.component';
 import { SecureService } from './autre/secure.service';
 
 @Component({

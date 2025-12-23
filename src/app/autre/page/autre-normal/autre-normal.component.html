@@ -1,0 +1,13 @@
+
+<div>
+  <h2>Composant Autre Normal</h2>
+  <p>Voici un composant chargé normalement.</p>
+  <button @deferTrigger>Voir le graphique</button>
+
+  @defer (on interaction) {
+    <p>C'est moi que tu attends ! </p>
+  }
+  @placeholder {
+    <p>Graphique prêt à afficher</p>
+  }
+</div>

@@ -1,0 +1,127 @@
+<h1>Démo Angular 20 — Nouveau templating</h1>
+
+<!-- @if / @else if / @else -->
+<h2>&#64;if / &#64;else if / &#64;else</h2>
+@if (status() === 'loading') {
+  <p>Chargement en cours…</p>
+} @else if (status() === 'error') {
+  <p role="alert">Une erreur est survenue.</p>
+} @else {
+  <p>Produits chargés !</p>
+}
+
+<hr>
+
+<!-- @let -->
+<!-- @let -->
+@let fullName = user().first + ' ' + user().last;
+<p>Utilisateur : {{ fullName }}</p>
+
+@let s = stats();
+<p>Total : {{ s.total }}</p>
+<p>Moyenne : {{ s.avg }}</p>
+
+<hr>
+
+<!-- @for + variables implicites + @empty -->
+<h2>&#64;for</h2>
+<ul>
+  @for (p of products(); track p.id) {
+    <li>
+      {{ $index + 1 }}/{{ $count }} — {{ p.name }}
+      @if ($first) { <span>🆕</span> }
+      @if ($even) { <span>(pair)</span> }
+    </li>
+  } @empty {
+    <li>Aucun produit trouvé</li>
+  }
+</ul>
+
+<hr>
+
+<!-- @switch / @case / @default -->
+<h2>&#64;switch</h2>
+@switch (role()) {
+  @case ('admin')  { <p>Bienvenue, administrateur</p> }
+  @case ('editor') { <p>Bienvenue, éditeur</p> }
+  @default         { <p>Bienvenue, visiteur</p> }
+}
+
+<hr>
+
+<!-- @defer avec triggers -->
+<h2>&#64;defer</h2>
+<button #btn>Afficher le widget</button>
+
+@defer (on hover(btn); prefetch on idle) {
+  <p>Widget chargé dynamiquement 🎉</p>
+} @placeholder {
+  <p>(Survolez le bouton pour charger le widget…)</p>
+} @loading (after 100ms) {
+  <p>Chargement du widget…</p>
+} @error {
+  <p>Erreur lors du chargement.</p>
+}
+
+<p>
+  {{products().length < 0}}
+  <!-- 6) Condition personnalisée (one-shot) -->
+  @defer (when products().length !== 0) {  Condition personnalisée (one-shot) arrive apres 8 sec (fake appel api)}
+  @placeholder {
+  <p style="color:red">avant de declancher</p>
+} @loading {
+  <p style="color:orange">Chargement du widget…</p>
+} @error {
+  <p>Erreur lors du chargement.</p>
+}
+</p>
+
+<p>@defer (on interaction(btn); prefetch on idle) { click sur afficher le widget}</p>  
+<!-- 
+prefetch on idle est un déclencheur de pré-chargement anticipé pour les deferrable views en Angular.
+on idle est souvent combiné avec on viewport ou on interaction → tu évites le délai perceptible.
+Tu peux aussi utiliser prefetch on hover(element) pour anticiper juste au survol.-->
+<p>
+  <!-- 1) Quand l'élément entre dans le viewport -->
+  @defer (on viewport) { Quand l'élément entre dans le viewport }
+  @placeholder { <div style="color:red"></div> }
+</p>
+
+<p>
+  <!-- 2) Au survol d'un bouton spécifique -->
+  <button #btn>Voir la carte</button>
+  @defer (on hover(btn)) { Au survol d'un bouton spécifique }
+</p>
+  
+<p>
+  <!-- 3) Après interaction sur une zone -->
+  <a #card tabindex="0">Cliquer pour détails</a>
+  @defer (on interaction(card)) { Après interaction sur une zone }
+</p>
+<p>
+  <!-- 4) Immédiatement après le rendu non différé -->
+  @defer (on immediate) { Immédiatement après le rendu non différé }    
+</p>
+<p>
+  <!-- 5) Après un timer -->
+  @defer (on timer(5000ms)) { Après un timer 5 sec  }
+</p> 
+
+<p>Linked (explicit) value: <strong>{{linkedExplicit()}}</strong></p>
+
+ <button 
+    class="px-4 py-2 rounded bg-white hover:shadow-lg" type="button" 
+    (click)="linkedExplicit.set('updated')">Update linked</button>
+
+<button 
+  class="px-4 py-2 rounded bg-white hover:shadow-lg" type="button" 
+  (click)="clickOnMe()">Click Me</button>
+
+
+<div>Speed</div>
+<input type="text" [ngModel]="speed()" readonly />
+
+
+
+
+

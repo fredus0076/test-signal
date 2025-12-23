@@ -1,0 +1,66 @@
+<div [style]="{color: 'red'}">
+  <h2>Composant Autre avec ID</h2>
+  <p>Voici un composant chargé avec un ID.</p>
+  <button #deferBtn (click)="showContent = true">Voir le graphique</button>
+
+  <!-- 
+    Choisis le bon déclencheur
+      on viewport : éléments visibles plus tard (lazy visuel).
+      on interaction (+ @deferTrigger) : bouton/onglet “Afficher…”.
+      on idle : préchargement doux en arrière-plan.
+      on timer(ms) : pubs/analytics non critiques.
+      when condition : charge quand dataReady ou isLoggedIn passe à true.
+      Combine avec prefetch on ... pour réactivité instantanée au moment M.
+
+    Soigne les états
+      Toujours fournir @placeholder, @loading, @error (accessibles, concis).
+      Utilise aria-busy, aria-live="polite" si tu annonces une mise à jour.
+
+    Déclencheurs à faible friction
+      Précharge tôt : prefetch on idle ou prefetch on viewport du conteneur parent.
+      Déclenche au besoin : on interaction pour éviter les coûts fantômes.
+
+    Data & effets
+      Démarre les appels dans le bloc différé pour éviter les fetchs inutiles avant déclenchement.
+      Si tu utilises des signals/observables, lie la condition : when dataReady().
+      Nettoie les subscriptions dans le composant différé (standard).
+
+    Anti-patterns fréquents
+      Mettre tout un écran dans un seul @defer.
+      Multiplier 10+ blocs @defer minuscules (trop de RTT).
+      Déclencher via on viewport sur un composant au-dessus du pli (perte de LCP).
+      Oublier @error → UX bloquée silencieusement.
+      Lancer un fetch hors du bloc alors que l’UI est différée.
+
+    Raccourci décisionnel
+      Est-ce visible au premier écran ou SEO-critique ? Non → continue
+      > 30–50 KB de code ou dépendances lourdes ? Oui → candidate
+      Nécessite action utilisateur ? Oui → on interaction (+ prefetch on idle)
+      Hors écran ? Oui → on viewport (+ prefetch on idle)
+      Peut attendre un moment calme ? Oui → on idle
+      Dépend d’une condition ? Oui → when condition
+        
+  --->
+
+  @defer (on viewport; prefetch on idle) { <!-- On viewport ne ce recharge pas quand on change de route et on reviens rien ne ce passe-->
+    <app-my-autre-test></app-my-autre-test>
+  }
+  @placeholder { <p>Cliquez sur le bouton pour voir le contenu.</p> } <!-- @placeholder definit le contenu à afficher avant le chargement -->
+  @loading { <p>Squelette d'attente</p> } <!-- @loading definit le contenu à afficher pendant le chargement -->
+  @error { <p>Impossible d’afficher les recos.</p> } <!-- @error definit le contenu à afficher en cas d'erreur -->
+
+  @defer (when showContent) { <!-- interaction avec un variabeble du composant -->
+    <p>Je suis John Doe</p>
+  }
+  @placeholder {
+    <p>Connectez-vous pour voir votre profil..</p>
+  }
+
+  @defer (on interaction(deferBtn)) { <!-- interaction avec un élément du template le bouton -->
+    <app-my-autre-test></app-my-autre-test>
+  }
+  @placeholder {
+    <p>Cliquez sur le bouton pour charger le composant.</p>
+  }
+
+</div>

@@ -14,6 +14,22 @@
   }
 }
 
+/* Bouton pour tester le gestionnaire d'erreurs */
+.error-test-button {
+  color: white;
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: #dc3545;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: #c82333;
+  }
+}
+
 /* Classes appliquées quand les routes sont actives */
 .active-route-blue {
   color: #007bff !important;

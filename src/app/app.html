@@ -9,6 +9,8 @@ Avec exact: true, Angular exige une correspondance stricte. -->
 <button [routerLink]="['/autre', 123 ]" routerLinkActive="active-route-red" class="nav-button">Page Autre avec id</button>
 <a class="nav-button" routerLink="/shop">Boutique</a>
 <a class="nav-button" routerLink="/templating">Test Signal</a>
+<a class="nav-button" routerLink="/error-test">Test Gestionnaire d'Erreurs</a>
 <button (click)="toggleUserAuthentication()">Authentification</button>
+<button (click)="testErrorHandler()" class="error-test-button">Test Error Handler</button>
 
 <router-outlet />

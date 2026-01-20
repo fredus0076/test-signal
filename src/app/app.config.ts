@@ -1,10 +1,13 @@
-import { ApplicationConfig, ErrorHandler, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, ErrorHandler, provideBrowserGlobalErrorListeners, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { GlobalErrorInterceptor } from './core/error-handler';
+import { TranslocoHttpLoader } from './core/translate/transloco-loader';
+import { provideTransloco } from '@jsverse/transloco';
+import { environmentProvider } from './core/environment/environmentToken';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +20,16 @@ export const appConfig: ApplicationConfig = {
       useClass: GlobalErrorInterceptor,
       multi: true
     },
-    provideAnimationsAsync(),
+    environmentProvider,
+    provideAnimationsAsync(), provideHttpClient(), provideTransloco({
+        config: { 
+          availableLangs: ['fr'],
+          defaultLang: 'fr',
+          // Remove this option if your application doesn't support changing language in runtime.
+          reRenderOnLangChange: true,
+          prodMode: !isDevMode(),
+        },
+        loader: TranslocoHttpLoader
+      }),
   ]
 };

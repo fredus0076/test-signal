@@ -1,16 +1,15 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
-import { TemplatingComponent } from './features/templating/templating.component';
 import { SecureService } from './core/auth/secure.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslocoPipe],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   protected readonly title = signal('test-signal');

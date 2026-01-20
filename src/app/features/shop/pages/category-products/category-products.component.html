@@ -2,6 +2,14 @@
   <h1>Produits de la catégorie</h1>
   <p>Catégorie : <strong>{{ category }}</strong></p>
 
+  <form class="filters" [formGroup]="form">
+    <app-category-search-control formControlName="search" />
+  </form>
+
+  <p class="debug">
+    Valeur du contrôle : <strong>{{ form.value.search }}</strong>
+  </p>
+
   <p>
     Remplace ce template par une liste de produits filtrés sur la catégorie.
   </p>

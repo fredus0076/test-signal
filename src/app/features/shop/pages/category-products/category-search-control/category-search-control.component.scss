@@ -1,0 +1,34 @@
+.search-control {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+}
+
+.clear {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  background: #f6f8fa;
+  cursor: pointer;
+}
+
+.clear:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

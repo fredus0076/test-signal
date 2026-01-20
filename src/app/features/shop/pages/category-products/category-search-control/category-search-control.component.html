@@ -1,0 +1,20 @@
+<div class="search-control">
+  <label class="label" for="category-search">Recherche</label>
+
+  <div class="input-row">
+    <input
+      id="category-search"
+      class="input"
+      type="text"
+      [value]="value"
+      [disabled]="disabled"
+      placeholder="Ex: chemise, chaussure…"
+      (input)="onInput(($any($event.target).value))"
+      (blur)="onBlur()"
+    />
+
+    <button type="button" class="clear" (click)="clear()" [disabled]="disabled || !value">
+      Effacer
+    </button>
+  </div>
+</div>

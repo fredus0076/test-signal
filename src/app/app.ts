@@ -1,10 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 import { SecureService } from '@core/auth/secure.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { ENVIRONMENT_TOKEN } from '@core/environnement/environnement.token';
+import { HttpClient } from '@angular/common/http';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { environmentToken } from '@core/environment/environmentToken';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +16,7 @@ export class App {
   protected readonly title = signal('test-signal');
   authService = inject(SecureService);
   http = inject(HttpClient); 
-  environment = inject(ENVIRONMENT_TOKEN);
+  environment = inject(environmentToken);
 
   toggleUserAuthentication() {
     this.authService.setUserAuthenticated(true);

@@ -16,9 +16,10 @@ export class GlobalErrorInterceptor implements HttpInterceptor {
         // Vérifier si on doit afficher l'erreur dans la snackbar
         const skipSnackbar = req.context.get(SKIP_GLOBAL_SNACKBAR);
         const isServer = error.status >= 500;
-
+console.log('out')
         // Gérer uniquement les erreurs serveur (500 et plus)
         if (!skipSnackbar && isServer) {
+          console.log('in')
           console.log('Appel de handleServerError pour status:', error.status);
           this.handleServerError(error);
         }

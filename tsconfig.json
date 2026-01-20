@@ -3,6 +3,21 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@feature/*": [
+        "src/app/features/*"
+      ],
+      "@environnement": [
+        "src/environments/environment.ts"
+      ],
+      "@environnement/*": [
+        "src/environments/*"
+      ]
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

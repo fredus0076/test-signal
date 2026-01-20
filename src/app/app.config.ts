@@ -2,7 +2,7 @@ import { ApplicationConfig, ErrorHandler, provideBrowserGlobalErrorListeners, pr
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { GlobalErrorInterceptor } from './core/error-handler';
 import { TranslocoHttpLoader } from './core/translate/transloco-loader';
@@ -15,6 +15,10 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(),
+    {
+      provide: ENVIRONMENT_TOKEN,
+      useValue: environment
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalErrorInterceptor,

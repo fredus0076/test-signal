@@ -14,9 +14,5 @@ export const routes: Routes = [
         // => Zoom ici : on utilise loadChildren
         loadChildren: () =>
         import('./features/shop/shop.routes').then(m => m.SHOP_ROUTES)
-    },
-    {
-        path: 'error-test',
-        loadComponent: () => import('./features/error-test/error-test.component').then(m => m.ErrorTestComponent)
-    },
+    }
 ];

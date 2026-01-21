@@ -2,9 +2,9 @@
 <div>
   <h2>Composant Autre Normal</h2>
   <p>Voici un composant chargé normalement.</p>
-  <button @deferTrigger>Voir le graphique</button>
+  <button #deferBtn>Voir le graphique</button>
 
-  @defer (on interaction) {
+  @defer (on interaction(deferBtn)) {
     <p>C'est moi que tu attends ! </p>
   }
   @placeholder {

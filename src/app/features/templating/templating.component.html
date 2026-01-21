@@ -1,13 +1,13 @@
-<h1>Démo Angular 20 — Nouveau templating</h1>
+<h1 data-testid="templating-title">Démo Angular 20 — Nouveau templating</h1>
 
 <!-- @if / @else if / @else -->
 <h2>&#64;if / &#64;else if / &#64;else</h2>
 @if (status() === 'loading') {
-  <p>Chargement en cours…</p>
+  <p data-testid="templating-status-loading">Chargement en cours…</p>
 } @else if (status() === 'error') {
-  <p role="alert">Une erreur est survenue.</p>
+  <p data-testid="templating-status-error" role="alert">Une erreur est survenue.</p>
 } @else {
-  <p>Produits chargés !</p>
+  <p data-testid="templating-status-done">Produits chargés !</p>
 }
 
 <hr>
@@ -15,7 +15,7 @@
 <!-- @let -->
 <!-- @let -->
 @let fullName = user().first + ' ' + user().last;
-<p>Utilisateur : {{ fullName }}</p>
+<p data-testid="templating-user-fullname">Utilisateur : {{ fullName }}</p>
 
 @let s = stats();
 <p>Total : {{ s.total }}</p>
@@ -25,7 +25,7 @@
 
 <!-- @for + variables implicites + @empty -->
 <h2>&#64;for</h2>
-<ul>
+<ul data-testid="templating-products-list">
   @for (p of products(); track p.id) {
     <li>
       {{ $index + 1 }}/{{ $count }} — {{ p.name }}
@@ -33,7 +33,7 @@
       @if ($even) { <span>(pair)</span> }
     </li>
   } @empty {
-    <li>Aucun produit trouvé</li>
+    <li data-testid="templating-products-empty">Aucun produit trouvé</li>
   }
 </ul>
 
@@ -42,9 +42,9 @@
 <!-- @switch / @case / @default -->
 <h2>&#64;switch</h2>
 @switch (role()) {
-  @case ('admin')  { <p>Bienvenue, administrateur</p> }
-  @case ('editor') { <p>Bienvenue, éditeur</p> }
-  @default         { <p>Bienvenue, visiteur</p> }
+  @case ('admin')  { <p data-testid="templating-role-message">Bienvenue, administrateur</p> }
+  @case ('editor') { <p data-testid="templating-role-message">Bienvenue, éditeur</p> }
+  @default         { <p data-testid="templating-role-message">Bienvenue, visiteur</p> }
 }
 
 <hr>
@@ -109,17 +109,17 @@ Tu peux aussi utiliser prefetch on hover(element) pour anticiper juste au survol
 
 <p>Linked (explicit) value: <strong>{{linkedExplicit()}}</strong></p>
 
- <button 
+<button data-testid="templating-linked-update-btn" 
     class="px-4 py-2 rounded bg-white hover:shadow-lg" type="button" 
     (click)="linkedExplicit.set('updated')">Update linked</button>
 
-<button 
+<button data-testid="templating-click-btn" 
   class="px-4 py-2 rounded bg-white hover:shadow-lg" type="button" 
   (click)="clickOnMe()">Click Me</button>
 
 
 <div>Speed</div>
-<input type="text" [ngModel]="speed()" readonly />
+<input data-testid="templating-speed-input" type="text" [ngModel]="speed()" readonly />
 
 
 

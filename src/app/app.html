@@ -1,23 +1,21 @@
-
-<h1>{{ 'hello' | transloco }}, {{ title() }}</h1>
+<h1 data-testid="app-title">{{ 'hello' | transloco }}, {{ title() }}</h1>
 <p>Congratulations! Your app is running. 🎉</p>
 <!-- ici on doit ajouter {exect: true} pour indiquer que l'on souhaite que le bouton soit actif uniquement sur cette route 
      puisque on a un path: ""
      Sans exact: true, Angular considère qu’une route parente est active dès qu’une route enfant correspond.
 Avec exact: true, Angular exige une correspondance stricte. -->
 <div style="margin-bottom: 1rem;">
-     <button routerLink="/autre" routerLinkActive="active-route-blue" [routerLinkActiveOptions]="{ exact: true }" class="nav-button">Page Autre</button>
-     <button [routerLink]="['/autre', 123 ]" routerLinkActive="active-route-red" class="nav-button">Page Autre avec id</button>
+<button data-testid="app-nav-autre" routerLink="/autre" routerLinkActive="active-route-blue" [routerLinkActiveOptions]="{ exact: true }" class="nav-button">Page Autre</button>
+<button data-testid="app-nav-autre-with-id" [routerLink]="['/autre', 123 ]" routerLinkActive="active-route-red" class="nav-button">Page Autre avec id</button>
 </div>
 <div style="margin-bottom: 1rem;" class="nav-group" routerLinkActive="active-nav-group">
-     <a class="nav-button" routerLink="/shop" routerLinkActive="active-route-blue" [routerLinkActiveOptions]="{ exact: true }">Boutique (Accueil)</a>
-     <a class="nav-button warning-btn" [routerLink]="['/shop/product', 42]">Boutique - Produit 42</a>
-     <a class="nav-button" [routerLink]="['/shop/category', 'shoes']" routerLinkActive="active-route-blue" [routerLinkActiveOptions]="{ exact: true }">Boutique - Catégorie shoes</a>
-     <a class="nav-button" routerLink="/templating">Test Signal</a>
-     <a class="nav-button" routerLink="/error-test">Test Gestionnaire d'Erreurs</a>
+<a data-testid="app-nav-shop" class="nav-button" routerLink="/shop">Boutique</a>
+<a data-testid="app-nav-templating" class="nav-button" routerLink="/templating">Test Signal</a>
+<a data-testid="app-nav-error-test" class="nav-button" routerLink="/error-test">Test Gestionnaire d'Erreurs</a>
 </div>
 <div style="margin-bottom: 1rem;">
-     <button (click)="toggleUserAuthentication()">Authentification</button>
-     <button (click)="testErrorHandler()" class="error-test-button">Test Error Handler</button>
+<button data-testid="app-auth-btn" (click)="toggleUserAuthentication()">Authentification</button>
+<button data-testid="app-error-handler-btn" (click)="testErrorHandler()" class="error-test-button">Test Error Handler</button>
 </div>
-<router-outlet />
+
+<router-outlet data-testid="app-router-outlet"></router-outlet>

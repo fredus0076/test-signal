@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-function burnCpu(ms = 800) {
+
+export function burnCpu(ms = 800) {
   const end = performance.now() + ms;
   let x = 0;
   while (performance.now() < end) {

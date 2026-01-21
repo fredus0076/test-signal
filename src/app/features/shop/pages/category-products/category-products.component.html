@@ -1,12 +1,12 @@
-<section class="category-products">
-  <h1>Produits de la catégorie</h1>
-  <p>Catégorie : <strong>{{ category }}</strong></p>
+<section class="category-products" data-testid="category-products-root">
+  <h1 data-testid="category-products-title">Produits de la catégorie</h1>
+  <p data-testid="category-products-category">Catégorie : <strong>{{ category }}</strong></p>
 
-  <form class="filters" [formGroup]="form">
+  <form class="filters" [formGroup]="form" data-testid="category-products-filters-form">
     <app-category-search-control formControlName="search" />
   </form>
 
-  <p class="debug">
+  <p class="debug" data-testid="category-products-debug">
     Valeur du contrôle : <strong>{{ form.value.search }}</strong>
   </p>
 

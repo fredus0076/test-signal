@@ -1,9 +1,10 @@
-<div class="search-control">
+<div class="search-control" data-testid="category-search-control-root">
   <label class="label" for="category-search">Recherche</label>
 
   <div class="input-row">
     <input
       id="category-search"
+      data-testid="category-search-control-input"
       class="input"
       type="text"
       [value]="value"
@@ -13,7 +14,7 @@
       (blur)="onBlur()"
     />
 
-    <button type="button" class="clear" (click)="clear()" [disabled]="disabled || !value">
+    <button data-testid="category-search-control-clear" type="button" class="clear" (click)="clear()" [disabled]="disabled || !value">
       Effacer
     </button>
   </div>

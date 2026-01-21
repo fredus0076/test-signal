@@ -1,9 +1,9 @@
-<section class="shop-home">
-  <h1>Bienvenue dans la boutique</h1>
+<section class="shop-home" data-testid="shop-home-root">
+  <h1 data-testid="shop-home-title">Bienvenue dans la boutique</h1>
   <p>Ceci est la page d'accueil de la feature <strong>shop</strong>.</p>
 
   <nav class="shop-nav">
-    <a [routerLink]="['/shop/product', 1]">Voir un produit (id = 1)</a>
-    <a [routerLink]="['/shop/category', 'shoes']">Voir la catégorie "shoes"</a>
+    <a data-testid="shop-home-link-product-1" [routerLink]="['/shop/product', 1]">Voir un produit (id = 1)</a>
+    <a data-testid="shop-home-link-category-shoes" [routerLink]="['/shop/category', 'shoes']">Voir la catégorie "shoes"</a>
   </nav>
 </section>

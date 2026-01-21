@@ -1,20 +1,21 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AutreNormalComponent } from './autre-normal.component';
 
 describe('AutreNormalComponent', () => {
   let component: AutreNormalComponent;
   let fixture: ComponentFixture<AutreNormalComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AutreNormalComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(async () => {
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+
+    await TestBed.configureTestingModule({
+      imports: [AutreNormalComponent],
+    }).compileComponents();
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AutreNormalComponent);

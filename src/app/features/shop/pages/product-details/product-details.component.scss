@@ -1,3 +1,26 @@
 .product-details {
   padding: 2rem;
 }
+
+.divider {
+  margin: 1.5rem 0;
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.deferred {
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.deferred.placeholder {
+  color: #6b7280;
+  background: #f9fafb;
+}
+
+.deferred.loading {
+  color: #374151;
+  background: #f3f4f6;
+}

@@ -1,0 +1,7 @@
+/*
+  Point d’entrée Sass du dossier `src/scss/`.
+  On agrège via @forward pour garder `src/styles.scss` simple.
+*/
+
+@forward './variables';
+@forward './global';

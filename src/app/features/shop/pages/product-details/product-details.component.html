@@ -6,4 +6,32 @@
     Remplace ce template par ta vraie page de détail produit.<br />
     Les données pourront venir d'un service, d'une API, etc.
   </p>
+
+  <hr class="divider" />
+
+  @defer (on viewport; prefetch on idle) {
+    <app-simule-lourd-component></app-simule-lourd-component>
+    <section class="deferred">
+      <h2>Avis & recommandations (chargé en différé)</h2>
+      <p>
+        Ce bloc n'est rendu que lorsqu'il entre dans le viewport. Pratique pour des sections
+        lourdes (reviews, carrousels, charts…).
+      </p>
+      <ul>
+        <li>⭐ 5/5 — "Super produit"</li>
+        <li>⭐ 4/5 — "Bon rapport qualité/prix"</li>
+        <li>⭐ 5/5 — "Livraison rapide"</li>
+      </ul>
+    </section>
+  } @placeholder {
+    <section class="deferred placeholder">
+      <h2>Avis & recommandations</h2>
+      <p>Fais défiler pour charger cette section…</p>
+    </section>
+  } @loading {
+    <section class="deferred loading">
+      <h2>Avis & recommandations</h2>
+      <p>Chargement…</p>
+    </section>
+  }
 </section>

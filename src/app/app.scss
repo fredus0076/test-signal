@@ -1,4 +1,7 @@
 /* Styles pour les boutons de navigation */
+@use 'scss/button' as button;
+
+
 .nav-button {
   color: black;
   padding: 10px 15px;
@@ -12,6 +15,20 @@
   &:hover {
     background-color: #e9ecef;
   }
+}
+ .warning-btn {
+  @include button.warning-btn;
+}
+.nav-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.active-nav-group {
+  border: 1px dashed #007bff;
+  border-radius: 8px;
+  padding: 6px;
 }
 
 /* Bouton pour tester le gestionnaire d'erreurs */

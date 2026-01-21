@@ -1,0 +1,8 @@
+@mixin warning-text{
+  color: var(--app-warning)
+}
+@mixin warning-btn{
+  text-decoration: none;
+  background-color: var(--app-warning);
+  color: white;  
+}

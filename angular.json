@@ -35,6 +35,11 @@
                 "output": "/public/i18n"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src"
+              ]
+            },
             "styles": [
               "src/styles.scss"
             ]
@@ -105,6 +110,11 @@
                 "output": "/public/i18n"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src"
+              ]
+            },
             "styles": [
               "src/styles.scss"
             ]

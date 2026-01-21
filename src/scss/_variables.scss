@@ -1,0 +1,19 @@
+/*
+  Variables CSS globales.
+  Utilise :root pour exposer des design tokens consommables partout (y compris dans le CSS runtime).
+*/
+
+:root {
+  /* Spacing */
+  --app-gap: 12px;
+  --app-padding: 16px;
+
+  /* Radius */
+  --app-radius: 10px;
+
+  /* Colors */
+  --app-border: #d0d7de;
+  --app-muted: #57606a;
+  --app-bg-soft: #f6f8fa;
+  --app-warning: #ffc107;
+}

@@ -9,6 +9,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:karma": "ng test"
+    "sonar": "npx sonar-scanner -Dsonar.host.url=%SONAR_HOST_URL% -Dsonar.token=%SONAR_TOKEN%"
   },
   "prettier": {
     "overrides": [
@@ -37,9 +38,12 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-devkit/core": "^20.1.4",
+    "@angular-devkit/schematics": "^20.1.4",
     "@angular/build": "^20.1.4",
     "@angular/cli": "^20.1.4",
     "@angular/compiler-cli": "^20.1.0",
+    "@schematics/angular": "^20.1.4",
     "@angular/platform-browser-dynamic": "^20.1.4",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^30.0.0",
